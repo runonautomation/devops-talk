@@ -1,0 +1,6 @@
+Openstack
+https://x86.trystack.org/dashboard/project/instances/
+Ubuntu - smaller
+
+Nagios:
+docker run -d -p 25 -p 80 quantumobject/docker-nagios

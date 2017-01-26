@@ -1,0 +1,33 @@
+# GitLab CI Docker Image
+# image: node:latest
+stages:
+  - build
+  - test
+  - deploy
+variables:
+  APP_NAME: "server.js"
+build:
+  stage: build
+  script:
+    - echo $CI_BUILD_ID
+    - mkdir dist
+    - sed -i 's/tag=1/tag="'$CI_BUILD_ID'"/g' server.js
+    - cp server.js dist
+    - cp run_server.sh dist
+  artifacts:
+    paths:
+      - dist/
+  tags:
+    - test
+test:
+  stage: test
+  script:
+    - ./test.sh
+  tags:
+    - test
+deploy:
+  stage: deploy
+  script:
+    - cd dist && ls -lahr && cat server.js && ./run_server.sh
+  tags:
+    - production

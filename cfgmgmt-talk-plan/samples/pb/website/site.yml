@@ -1,0 +1,11 @@
+---
+- name: Install
+  hosts: webfarm
+
+  roles:
+    - common
+    - mariadb
+    - nginx
+    - php-fpm
+    - myapp
+

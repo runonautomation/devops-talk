@@ -1,0 +1,7 @@
+---
+
+mysqlservice: mysqld
+mysql_port: 3306
+
+nginx_port: 80
+server_hostname: server.example.com
